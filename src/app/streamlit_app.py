@@ -34,13 +34,12 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 # -------------------------------
-#  Project Paths
-# -------------------------------
-project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-fonts_path = os.path.join(project_root, "data", "fonts", "DejaVuSans.ttf")
-bold_fonts_path = os.path.join(project_root, "data", "fonts", "DejaVuSans-Bold.ttf")
-dataset_path = os.path.join(project_root, "data", "raw", "telangana_health_dataset2025.csv")
-icons_path = os.path.join(project_root, "data", "icons")
+# Simplified paths for Streamlit Cloud
+fonts_path = os.path.join("data", "fonts", "DejaVuSans.ttf")
+bold_fonts_path = os.path.join("data", "fonts", "DejaVuSans-Bold.ttf")
+dataset_path = os.path.join("data", "raw", "telangana_health_dataset2025.csv")
+icons_path = os.path.join("data", "icons")
+
 
 #  Font check
 if not os.path.exists(fonts_path) or not os.path.exists(bold_fonts_path):
