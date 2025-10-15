@@ -1,6 +1,6 @@
 # ============================================
 #  Custom Sidebar for Telangana Health App
-# (Lavender–Teal Theme + Dynamic Highlight + Glowing Hover Tooltips)
+# (Lavender–Teal Theme + Dynamic Highlight + Glowing Hover Tooltips + Local Logo)
 # ============================================
 
 import streamlit as st
@@ -111,7 +111,7 @@ def render_sidebar():
         [data-testid="stSidebar"] a:hover::after {
             opacity: 1;
             transform: translateY(-50%) translateX(4px);
-            box-shadow: 0 0 8px rgba(255,255,255,0.7);  /*  Glowing effect */
+            box-shadow: 0 0 8px rgba(255,255,255,0.7);
         }
 
         /* --- Footer Caption --- */
@@ -126,12 +126,17 @@ def render_sidebar():
     """, unsafe_allow_html=True)
 
     # -------------------------------
-    #  App Branding
+    #  App Branding (Using Local Logo)
     # -------------------------------
-    st.sidebar.image(
-        "https://en.wikipedia.org/wiki/Emblem_of_Telangana#/media/File:Emblem_of_Telangana.svg",
-        width=70
-    )
+    logo_path = os.path.join(os.path.dirname(__file__), "../../assets/logo.png")
+    if os.path.exists(logo_path):
+        st.sidebar.image(logo_path, width=90)
+    else:
+        # Fallback in case logo missing
+        st.sidebar.image(
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Emblem_of_Telangana.svg/512px-Emblem_of_Telangana.svg.png",
+            width=70
+        )
 
     st.sidebar.markdown(
         "<h2 style='color:#004D40; text-align:center; font-size:20px;'>Telangana Health</h2>",
@@ -184,7 +189,7 @@ def render_sidebar():
         - WhatsApp/SMS integration  
 
          Developed by **Team 18**  
-         Built with Streamlit
+          Built with Streamlit
         """
     )
 
