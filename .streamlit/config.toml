@@ -1,0 +1,28 @@
+# ==========================================================
+# Telangana Health Awareness App — Streamlit Configuration
+# ==========================================================
+
+[theme]
+primaryColor = "#6A0DAD"             # Telangana Purple
+backgroundColor = "#F9F6FF"          # Light lavender
+secondaryBackgroundColor = "#EDE7F6" # Sidebar background
+textColor = "#2E2E2E"
+font = "sans serif"
+
+[server]
+headless = true
+enableCORS = true
+enableXsrfProtection = true
+fileWatcherType = "auto"
+port = 8505
+runOnSave = true
+
+[client]
+toolbarMode = "auto"
+showErrorDetails = true
+showSidebarNavigation = true
+
+[browser]
+gatherUsageStats = false
+serverAddress = "localhost"
+serverPort = 8505
