@@ -3,11 +3,6 @@
 # (Lavender–Teal Theme + Safe Font Fallback + Cloud-Ready)
 # ============================================
 
-# ============================================
-#  Telangana Health Awareness Streamlit App
-# (Lavender–Teal Theme + Safe Font Fallback + Cloud-Ready)
-# ============================================
-
 import os
 import sys
 import pandas as pd
@@ -15,7 +10,7 @@ import streamlit as st
 from deep_translator import GoogleTranslator
 from fpdf import FPDF
 
-# ✅ Fix: make src folder importable (for Streamlit Cloud)
+#  Fix: make src folder importable (for Streamlit Cloud)
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(current_dir, "../.."))
 if project_root not in sys.path:
@@ -39,7 +34,7 @@ st.set_page_config(
 apply_global_styles()
 
 # -------------------------------
-# 🏥 Header Section (with logo)
+#  Header Section (with logo)
 # -------------------------------
 st.markdown("""
     <div style='display:flex; align-items:center; justify-content:center; gap:12px;'>
