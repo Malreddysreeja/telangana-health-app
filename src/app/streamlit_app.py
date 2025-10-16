@@ -37,20 +37,20 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # -------------------------------
-# 📁 Simplified Cloud Paths
+#  Simplified Cloud Paths
 # -------------------------------
 fonts_path = os.path.join("data", "fonts", "DejaVuSans.ttf")
 bold_fonts_path = os.path.join("data", "fonts", "DejaVuSans-Bold.ttf")
 dataset_path = os.path.join("data", "raw", "telangana_health_dataset2025.csv")
 icons_path = os.path.join("data", "icons")
 
-# ✅ Font check (no crash if missing)
+#  Font check (no crash if missing)
 if not os.path.exists(fonts_path) or not os.path.exists(bold_fonts_path):
     st.warning("⚠️ Font files not found — using default Streamlit fonts.")
     fonts_path = bold_fonts_path = None
 
 # -------------------------------
-# 🗺️ District-to-Language Mapping
+#  District-to-Language Mapping
 # -------------------------------
 language_map = {district: "te" for district in [
     "Adilabad", "Bhadradri Kothagudem", "Jagtial", "Jangaon", "Jayashankar Bhupalpally",
@@ -64,7 +64,7 @@ language_map["Hyderabad"] = "ur"
 language_map["default"] = "en"
 
 # -------------------------------
-# 📊 Load Dataset
+#  Load Dataset
 # -------------------------------
 @st.cache_data
 def load_data():
@@ -76,19 +76,19 @@ def load_data():
 df = load_data()
 
 if df.empty:
-    st.warning("⚠️ Dataset is empty or missing.")
+    st.warning(" Dataset is empty or missing.")
     st.stop()
 else:
-    st.success("✅ Dataset loaded successfully!")
+    st.success(" Dataset loaded successfully!")
 
 # -------------------------------
-# 🏙️ District Selection
+#  District Selection
 # -------------------------------
 districts = sorted(df["District"].dropna().unique())
-user_district = st.selectbox("🏙️ Select your District:", districts)
+user_district = st.selectbox(" Select your District:", districts)
 
 # -------------------------------
-# 🧠 Disease Insights
+#  Disease Insights
 # -------------------------------
 if user_district:
     district_data = df[df["District"] == user_district]
@@ -116,23 +116,23 @@ if user_district:
             top_disease, "Stay healthy and maintain hygiene to prevent infections."
         )
 
-        st.write("### 💬 Awareness Message (English):")
+        st.write("###  Awareness Message (English):")
         st.info(awareness_message)
 
-        # 🌐 Translation
+        #  Translation
         target_lang = language_map.get(user_district, language_map["default"])
         translated_text = ""
-        translate_toggle = st.checkbox("🌏 Translate to Local Language")
+        translate_toggle = st.checkbox(" Translate to Local Language")
 
         if translate_toggle and target_lang != "en":
             try:
                 translated_text = GoogleTranslator(source="auto", target=target_lang).translate(awareness_message)
-                st.write(f"### 🗣️ Awareness Message ({target_lang.upper()}):")
+                st.write(f"###  Awareness Message ({target_lang.upper()}):")
                 st.success(translated_text)
             except Exception as e:
                 st.warning(f"Translation failed: {e}")
 
-        # 🎬 Educational Video
+        #  Educational Video
         video_dict = {
             "Dengue": "https://www.youtube.com/watch?v=Fixp7OAYFfA",
             "Malaria": "https://www.youtube.com/watch?v=8-6KDqcUBC8",
@@ -145,16 +145,16 @@ if user_district:
         if video_url:
             st.video(video_url)
         else:
-            st.info("🎥 No educational video available for this disease.")
+            st.info(" No educational video available for this disease.")
 
         # -------------------------------
-        # 📄 PDF Download
+        #  PDF Download
         # -------------------------------
         def create_pdf(district, disease, english_msg, local_msg=None, lang_code=""):
             pdf = FPDF()
             pdf.add_page()
 
-            # ✅ Safe font handling
+            #  Safe font handling
             if fonts_path and os.path.exists(fonts_path):
                 pdf.add_font("DejaVu", "", fonts_path, uni=True)
             if bold_fonts_path and os.path.exists(bold_fonts_path):
@@ -193,11 +193,11 @@ if user_district:
         pdf_file = create_pdf(user_district, top_disease, awareness_message, translated_text, target_lang)
         with open(pdf_file, "rb") as f:
             st.download_button(
-                label="📥 Download Awareness Info as PDF",
+                label=" Download Awareness Info as PDF",
                 data=f,
                 file_name=os.path.basename(pdf_file),
                 mime="application/pdf"
             )
 
     else:
-        st.warning("⚠️ No data available for this district.")
+        st.warning(" No data available for this district.")
