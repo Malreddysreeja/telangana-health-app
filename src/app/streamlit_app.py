@@ -43,8 +43,9 @@ icons_path = os.path.join("data", "icons")
 
 #  Font check
 if not os.path.exists(fonts_path) or not os.path.exists(bold_fonts_path):
-    st.error(f"Font files not found in {os.path.dirname(fonts_path)}. Please add DejaVuSans.ttf and DejaVuSans-Bold.ttf.")
-    st.stop()
+    st.warning("Font files not found. Using default Streamlit fonts instead.")
+    fonts_path = bold_fonts_path = None
+
 
 # -------------------------------
 #  District-to-Language Mapping
