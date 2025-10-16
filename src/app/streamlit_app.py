@@ -1,5 +1,5 @@
 # ============================================
-# 🩺 Telangana Health Awareness Streamlit App
+#  Telangana Health Awareness Streamlit App
 # (Lavender–Teal Theme + Safe Font Fallback + Cloud-Ready)
 # ============================================
 
@@ -11,12 +11,13 @@ from fpdf import FPDF
 from utils.ui_theme import apply_global_styles
 
 
+
 # -------------------------------
 #  PAGE CONFIGURATION
 # -------------------------------
 st.set_page_config(
     page_title="Telangana Health Awareness",
-    page_icon="🩺",
+    page_icon="",
     layout="wide"
 )
 
@@ -46,7 +47,7 @@ icons_path = os.path.join("data", "icons")
 
 #  Font check (no crash if missing)
 if not os.path.exists(fonts_path) or not os.path.exists(bold_fonts_path):
-    st.warning("⚠️ Font files not found — using default Streamlit fonts.")
+    st.warning(" Font files not found — using default Streamlit fonts.")
     fonts_path = bold_fonts_path = None
 
 # -------------------------------
