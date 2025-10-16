@@ -1,16 +1,23 @@
 # ============================================
-#  Telangana Health Awareness Portal (Main App)
+#  Telangana Health Awareness Streamlit App
+# (Lavender–Teal Theme + Safe Font Fallback + Cloud-Ready)
 # ============================================
 
 import os
 import sys
+import pandas as pd
 import streamlit as st
+from deep_translator import GoogleTranslator
+from fpdf import FPDF
 
-#  Dynamically add project root to Python path
-current_file = os.path.abspath(__file__)
-project_root = os.path.dirname(os.path.dirname(os.path.dirname(current_file)))
+# ✅ Auto-detect project root (works locally & on Streamlit Cloud)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.abspath(os.path.join(current_dir, "../.."))
 if project_root not in sys.path:
-    sys.path.insert(0, project_root)
+    sys.path.append(project_root)
+
+from src.utils.ui_theme import apply_global_styles
+
 
 #  Import theme and sidebar safely
 try:
