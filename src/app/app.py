@@ -19,6 +19,7 @@ if project_root not in sys.path:
 from src.utils.ui_theme import apply_global_styles
 
 
+
 #  Import theme and sidebar safely
 try:
     from src.utils.ui_theme import apply_global_styles
