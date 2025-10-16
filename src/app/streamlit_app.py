@@ -41,9 +41,9 @@ dataset_path = os.path.join("data", "raw", "telangana_health_dataset2025.csv")
 icons_path = os.path.join("data", "icons")
 
 
-#  Font check
+#  Font check (no crash if missing)
 if not os.path.exists(fonts_path) or not os.path.exists(bold_fonts_path):
-    st.warning("Font files not found. Using default Streamlit fonts instead.")
+    st.warning(" Font files not found — using default Streamlit fonts.")
     fonts_path = bold_fonts_path = None
 
 
