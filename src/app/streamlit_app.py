@@ -8,10 +8,11 @@ import pandas as pd
 import streamlit as st
 from deep_translator import GoogleTranslator
 from fpdf import FPDF
-from utils.ui_theme import apply_global_styles  # ✅ FIXED IMPORT PATH
+from utils.ui_theme import apply_global_styles
+
 
 # -------------------------------
-# 🌐 PAGE CONFIGURATION
+#  PAGE CONFIGURATION
 # -------------------------------
 st.set_page_config(
     page_title="Telangana Health Awareness",
